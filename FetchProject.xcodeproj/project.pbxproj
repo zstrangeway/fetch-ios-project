@@ -14,6 +14,10 @@
 		647EE6CF2C92995300EFA3EA /* FetchProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647EE6CE2C92995300EFA3EA /* FetchProjectTests.swift */; };
 		647EE6D92C92995300EFA3EA /* FetchProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647EE6D82C92995300EFA3EA /* FetchProjectUITests.swift */; };
 		647EE6DB2C92995300EFA3EA /* FetchProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647EE6DA2C92995300EFA3EA /* FetchProjectUITestsLaunchTests.swift */; };
+		64D3BF552C92A33C009B316A /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF542C92A33C009B316A /* ModelData.swift */; };
+		64D3BF592C92A37D009B316A /* MealSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF582C92A37D009B316A /* MealSummary.swift */; };
+		64D3BF5B2C92AF99009B316A /* MealList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF5A2C92AF99009B316A /* MealList.swift */; };
+		64D3BF5E2C92B660009B316A /* ListMealsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF5D2C92B660009B316A /* ListMealsResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,10 @@
 		647EE6D42C92995300EFA3EA /* FetchProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FetchProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		647EE6D82C92995300EFA3EA /* FetchProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProjectUITests.swift; sourceTree = "<group>"; };
 		647EE6DA2C92995300EFA3EA /* FetchProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		64D3BF542C92A33C009B316A /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		64D3BF582C92A37D009B316A /* MealSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealSummary.swift; sourceTree = "<group>"; };
+		64D3BF5A2C92AF99009B316A /* MealList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealList.swift; sourceTree = "<group>"; };
+		64D3BF5D2C92B660009B316A /* ListMealsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMealsResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				647EE6BD2C92995100EFA3EA /* FetchProjectApp.swift */,
-				647EE6BF2C92995100EFA3EA /* ContentView.swift */,
+				64D3BF522C92A2F8009B316A /* Models */,
+				64D3BF532C92A305009B316A /* Views */,
 				647EE6C12C92995300EFA3EA /* Assets.xcassets */,
 				647EE6C32C92995300EFA3EA /* Preview Content */,
 			);
@@ -125,6 +134,33 @@
 				647EE6DA2C92995300EFA3EA /* FetchProjectUITestsLaunchTests.swift */,
 			);
 			path = FetchProjectUITests;
+			sourceTree = "<group>";
+		};
+		64D3BF522C92A2F8009B316A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				64D3BF542C92A33C009B316A /* ModelData.swift */,
+				64D3BF582C92A37D009B316A /* MealSummary.swift */,
+				64D3BF5D2C92B660009B316A /* ListMealsResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		64D3BF532C92A305009B316A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				647EE6BF2C92995100EFA3EA /* ContentView.swift */,
+				64D3BF5C2C92AFA0009B316A /* Views */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		64D3BF5C2C92AFA0009B316A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				64D3BF5A2C92AF99009B316A /* MealList.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +294,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				647EE6C02C92995100EFA3EA /* ContentView.swift in Sources */,
+				64D3BF592C92A37D009B316A /* MealSummary.swift in Sources */,
+				64D3BF5E2C92B660009B316A /* ListMealsResponse.swift in Sources */,
+				64D3BF5B2C92AF99009B316A /* MealList.swift in Sources */,
 				647EE6BE2C92995100EFA3EA /* FetchProjectApp.swift in Sources */,
+				64D3BF552C92A33C009B316A /* ModelData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
