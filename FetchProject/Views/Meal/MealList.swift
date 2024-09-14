@@ -15,24 +15,25 @@ struct MealList: View {
             List {
                 ForEach(modelData.meals) { meal in
                     NavigationLink {
-                        // View
+                        MealDetail(mealId: meal.id)
                     } label: {
-                        Text(meal.name)
+                        MealRow(meal: meal)
                     }
                 }
             }
-            .navigationTitle("Desserts")
+                .animation(.default, value: modelData.meals)
+                .navigationTitle("Desserts")
         } detail: {
             Text("Select a Dessert")
         }
-        .task {
-            do {
-                modelData.meals = try await getMeals()
-            } catch let error {
-                // TODO: Properly handle error
-                print("Something went wrong: \(error)")
+            .task {
+                do {
+                    modelData.meals = try await getMeals()
+                } catch let error {
+                    // TODO: Properly handle error
+                    print("Something went wrong: \(error)")
+                }
             }
-        }
     }
     
 }

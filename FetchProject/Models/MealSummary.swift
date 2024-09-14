@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MealSummary: Codable, Identifiable {
+struct MealSummary: Codable, Identifiable, Hashable {
     private var rawId: String
     private var rawName: String
     private var rawThumbUrl: String
