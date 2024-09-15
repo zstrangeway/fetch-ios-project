@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct MealRow: View {
-    let imageSize: Double = 60
-    
+    let IMAGE_SIZE: Double = 60
     var meal: MealSummary?
     
     var body: some View {
@@ -23,7 +22,7 @@ struct MealRow: View {
                 Circle()
                     .foregroundColor(.secondary)
             }
-                .frame(width: imageSize, height: imageSize)
+                .frame(width: IMAGE_SIZE, height: IMAGE_SIZE)
             
             Text(meal?.name ?? "Dessert")
         }

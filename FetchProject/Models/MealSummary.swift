@@ -8,25 +8,19 @@
 import Foundation
 
 struct MealSummary: Codable, Identifiable, Hashable {
-    private var rawId: String
-    private var rawName: String
-    private var rawThumbUrl: String
+    private let idMeal: String
+    private let strMeal: String
+    private let strMealThumb: String
     
     var id: String {
-        return rawId
+        return idMeal
     }
 
     var name: String {
-        return rawName
+        return strMeal
     }
     
     var thumbUrl: URL? {
-        return URL(string: rawThumbUrl)
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case rawId = "idMeal"
-        case rawName = "strMeal"
-        case rawThumbUrl = "strMealThumb"
+        return URL(string: strMealThumb)
     }
 }

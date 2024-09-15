@@ -7,13 +7,14 @@
 
 import Foundation
 
-class MealListViewModel: ObservableObject {
+@MainActor class MealListViewModel: ObservableObject {
     private let theMealDbApiService: TheMealDbApiServicable
     
     @Published var meals: [MealSummary] = []
     
     init(theMealDbApiService: TheMealDbApiServicable) {
         self.theMealDbApiService = theMealDbApiService
+        self.meals = [];
     }
     
     func loadMeals() async {

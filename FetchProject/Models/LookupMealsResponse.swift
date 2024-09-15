@@ -7,16 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 struct LookupMealsResponse: Codable {
-    private var rawMeals: [Meal]
-    
-    var meals: [Meal] {
-        return rawMeals;
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case rawMeals = "meals"
-    }
+    let meals: [Meal]
 }

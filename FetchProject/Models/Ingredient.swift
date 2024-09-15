@@ -8,7 +8,7 @@
 import Foundation
 
 struct Ingredient: Identifiable {
-    var id: Int
-    var name: String
-    var measurement: String
+    let id: Int
+    let name: String
+    let measurement: String
 }

@@ -19,7 +19,6 @@ struct MealDetail: View {
     
     var body: some View {
         ScrollView {
-            Text("Hello World")
             AsyncImage(url: vm.meal?.thumbUrl) { image in
                 image
                     .resizable()

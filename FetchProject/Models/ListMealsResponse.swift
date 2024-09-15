@@ -8,13 +8,5 @@
 import Foundation
 
 struct ListMealsResponse: Codable {
-    private var rawMeals: [MealSummary]
-    
-    var meals: [MealSummary] {
-        return rawMeals;
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case rawMeals = "meals"
-    }
+    let meals: [MealSummary]
 }
