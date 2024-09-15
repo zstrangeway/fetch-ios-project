@@ -8,37 +8,37 @@
 import SwiftUI
 
 struct MealList: View {
-    @Environment(ModelData.self) var modelData
+    private let theMealDbApiService: TheMealDbApiServicable
+    @StateObject private var vm: MealListViewModel
+    
+    init (theMealDbApiService: TheMealDbApiServicable) {
+        _vm = StateObject(wrappedValue: MealListViewModel(theMealDbApiService: theMealDbApiService))
+        self.theMealDbApiService = theMealDbApiService
+    }
     
     var body: some View {
         NavigationSplitView {
             List {
-                ForEach(modelData.meals) { meal in
+                ForEach(vm.meals) { meal in
                     NavigationLink {
-                        MealDetail(mealId: meal.id)
+                        MealDetail(mealId: meal.id, theMealDbApiService: self.theMealDbApiService)
                     } label: {
                         MealRow(meal: meal)
                     }
                 }
             }
-                .animation(.default, value: modelData.meals)
+                .animation(.default, value: vm.meals)
                 .navigationTitle("Desserts")
         } detail: {
             Text("Select a Dessert")
         }
             .task {
-                do {
-                    modelData.meals = try await getMeals()
-                } catch let error {
-                    // TODO: Properly handle error
-                    print("Something went wrong: \(error)")
-                }
+                await vm.loadMeals()
             }
     }
     
 }
 
 #Preview {
-    MealList()
-        .environment(ModelData())
+    MealList(theMealDbApiService: TheMealDbApiService())
 }

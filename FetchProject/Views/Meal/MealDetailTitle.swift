@@ -8,24 +8,26 @@
 import SwiftUI
 
 struct MealDetailTitle: View {
-    @Environment(ModelData.self) var modelData
+    let name: String
+    let category: String
+    let area: String
     
     var body: some View {
         VStack(alignment: .leading){
             VStack(alignment: .leading){
-                Text(modelData.meal?.name ?? "loading...")
+                Text(name)
                     .font(.title)
                 HStack {
-                    Text(modelData.meal?.category ?? "loading...")
+                    Text(category)
 
                     Divider()
                         .frame(width: 1, height: 20)
                         .overlay(.white)
 
-                    Text(modelData.meal?.area ?? "loading...")
+                    Text(area)
                         .fontWeight(.light)
                         .italic()
-                    
+
                     Spacer()
                 }
             }
@@ -33,11 +35,9 @@ struct MealDetailTitle: View {
         }
             .foregroundColor(.white)
             .background(.black.opacity(0.5))
-            
     }
 }
 
 #Preview {
-    MealDetailTitle()
-        .environment(ModelData())
+    MealDetailTitle(name: "Name", category: "Category", area: "Area")
 }

@@ -33,5 +33,4 @@ struct MealRow: View {
 
 #Preview {
     MealRow(meal: nil)
-        .environment(ModelData())
 }

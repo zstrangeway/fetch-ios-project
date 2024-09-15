@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    private let theMealDbApiService: TheMealDbApiServicable
+    
+    init (theMealDbApiService: TheMealDbApiServicable) {
+        self.theMealDbApiService = theMealDbApiService
+    }
+    
     var body: some View {
-        MealList()
+        MealList(theMealDbApiService: self.theMealDbApiService)
     }
 }
 
 #Preview {
-    ContentView()
-        .environment(ModelData())
+    ContentView(theMealDbApiService: TheMealDbApiService())
 }

@@ -9,12 +9,12 @@ import SwiftUI
 
 @main
 struct FetchProjectApp: App {
-    @State private var modelData = ModelData()
+    // Only one dependency, but would consider an IoC container in the future
+    let theMealDbApiService = TheMealDbApiService()
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(modelData)
+            ContentView(theMealDbApiService: theMealDbApiService)
         }
     }
 }

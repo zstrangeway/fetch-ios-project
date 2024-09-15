@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct MealDetail: View {
-    @Environment(ModelData.self) var modelData
-    
     var mealId: String
+    
+    @StateObject private var vm: MealDetailViewModel
+    
+    init (mealId: String, theMealDbApiService: TheMealDbApiServicable) {
+        _vm = StateObject(wrappedValue: MealDetailViewModel(theMealDbApiService: theMealDbApiService))
+        self.mealId = mealId
+    }
     
     var body: some View {
         ScrollView {
-            AsyncImage(url: modelData.meal?.thumbUrl) { image in
+            Text("Hello World")
+            AsyncImage(url: vm.meal?.thumbUrl) { image in
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -25,14 +31,21 @@ struct MealDetail: View {
             }
                 .frame(height: 300)
                 .clipped()
-                .overlay(MealDetailTitle(), alignment: .bottomLeading)
+                .overlay(
+                    MealDetailTitle(
+                        name: vm.meal?.name ?? "loading...",
+                        category: vm.meal?.category ?? "loading...",
+                        area: vm.meal?.area ?? "loading..."
+                    ),
+                    alignment: .bottomLeading
+                )
             
             VStack(alignment: .leading, spacing: 20) {
                 Text("Ingredients:")
                     .font(.title2)
                 
                 VStack(alignment: .leading, spacing: 20) {
-                    ForEach(modelData.meal?.ingredients ?? []) { ingredient in
+                    ForEach(vm.meal?.ingredients ?? []) { ingredient in
                         HStack {
                             Text(ingredient.measurement)
                             Text(ingredient.name)
@@ -48,24 +61,18 @@ struct MealDetail: View {
                 Text("Instructions:")
                     .font(.title2)
                 
-                Text(modelData.meal?.instructions ?? "loading...")
+                Text(vm.meal?.instructions ?? "loading...")
             }
                 .padding()
         }
-            .navigationTitle(modelData.meal?.name ?? "loading...")
+            .navigationTitle(vm.meal?.name ?? "loading...")
             .navigationBarTitleDisplayMode(.inline)
             .task {
-                do {
-                    modelData.meal = try await getMeal(with: mealId)
-                } catch let error {
-                    // TODO: Properly handle error
-                    print("Something went wrong: \(error)")
-                }
+                await vm.loadMeal(withId: self.mealId)
             }
     }
 }
 
 #Preview {
-    MealDetail(mealId: "53049")
-        .environment(ModelData())
+    MealDetail(mealId: "53049", theMealDbApiService: TheMealDbApiService())
 }
