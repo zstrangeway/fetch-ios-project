@@ -22,6 +22,7 @@ struct MealList: View {
                 ForEach(vm.meals) { meal in
                     NavigationLink {
                         MealDetail(mealId: meal.id, theMealDbApiService: self.theMealDbApiService)
+                            .id(meal.id)
                     } label: {
                         MealRow(meal: meal)
                     }
