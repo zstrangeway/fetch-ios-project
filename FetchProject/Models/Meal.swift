@@ -15,47 +15,47 @@ struct Meal: Codable {
     private let strArea: String
     private let strInstructions: String
     
-    private let strIngredient1: String
-    private let strIngredient2: String
-    private let strIngredient3: String
-    private let strIngredient4: String
-    private let strIngredient5: String
-    private let strIngredient6: String
-    private let strIngredient7: String
-    private let strIngredient8: String
-    private let strIngredient9: String
-    private let strIngredient10: String
-    private let strIngredient11: String
-    private let strIngredient12: String
-    private let strIngredient13: String
-    private let strIngredient14: String
-    private let strIngredient15: String
-    private let strIngredient16: String
-    private let strIngredient17: String
-    private let strIngredient18: String
-    private let strIngredient19: String
-    private let strIngredient20: String
+    private let strIngredient1: String?
+    private let strIngredient2: String?
+    private let strIngredient3: String?
+    private let strIngredient4: String?
+    private let strIngredient5: String?
+    private let strIngredient6: String?
+    private let strIngredient7: String?
+    private let strIngredient8: String?
+    private let strIngredient9: String?
+    private let strIngredient10: String?
+    private let strIngredient11: String?
+    private let strIngredient12: String?
+    private let strIngredient13: String?
+    private let strIngredient14: String?
+    private let strIngredient15: String?
+    private let strIngredient16: String?
+    private let strIngredient17: String?
+    private let strIngredient18: String?
+    private let strIngredient19: String?
+    private let strIngredient20: String?
     
-    private let strMeasure1: String
-    private let strMeasure2: String
-    private let strMeasure3: String
-    private let strMeasure4: String
-    private let strMeasure5: String
-    private let strMeasure6: String
-    private let strMeasure7: String
-    private let strMeasure8: String
-    private let strMeasure9: String
-    private let strMeasure10: String
-    private let strMeasure11: String
-    private let strMeasure12: String
-    private let strMeasure13: String
-    private let strMeasure14: String
-    private let strMeasure15: String
-    private let strMeasure16: String
-    private let strMeasure17: String
-    private let strMeasure18: String
-    private let strMeasure19: String
-    private let strMeasure20: String
+    private let strMeasure1: String?
+    private let strMeasure2: String?
+    private let strMeasure3: String?
+    private let strMeasure4: String?
+    private let strMeasure5: String?
+    private let strMeasure6: String?
+    private let strMeasure7: String?
+    private let strMeasure8: String?
+    private let strMeasure9: String?
+    private let strMeasure10: String?
+    private let strMeasure11: String?
+    private let strMeasure12: String?
+    private let strMeasure13: String?
+    private let strMeasure14: String?
+    private let strMeasure15: String?
+    private let strMeasure16: String?
+    private let strMeasure17: String?
+    private let strMeasure18: String?
+    private let strMeasure19: String?
+    private let strMeasure20: String?
     
     var id: String {
         return idMeal
@@ -108,11 +108,14 @@ struct Meal: Codable {
         var id = 0;
         
         return rawIngredients.filter { (name, measurement) in
-            return !(name == "" && measurement == " ")
+            guard name != nil, name != "", measurement != nil, measurement != "" else {
+                return false
+            }
+            return true
         }
         .map { (name, measurement) in
             id += 1
-            return Ingredient(id: id, name: name, measurement: measurement)
+            return Ingredient(id: id, name: name ?? "", measurement: measurement ?? "")
         }
     }
 }
