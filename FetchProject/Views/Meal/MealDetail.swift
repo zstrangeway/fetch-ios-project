@@ -12,8 +12,8 @@ struct MealDetail: View {
     
     @StateObject private var vm: MealDetailViewModel
     
-    init (mealId: String, mealsApiService: MealsApiServicable) {
-        _vm = StateObject(wrappedValue: MealDetailViewModel(mealsApiService: mealsApiService))
+    init (mealId: String, mealsApiService: MealsApiServicable, loggingService: LoggingServicable) {
+        _vm = StateObject(wrappedValue: MealDetailViewModel(mealsApiService: mealsApiService, loggingService: loggingService))
         self.mealId = mealId
     }
     
@@ -73,5 +73,9 @@ struct MealDetail: View {
 }
 
 #Preview {
-    MealDetail(mealId: "53049", mealsApiService: MealsApiService(baseUrl: "https://themealdb.com/api/json/v1/1"))
+    MealDetail(
+        mealId: "53049",
+        mealsApiService: MealsApiService(baseUrl: "https://themealdb.com/api/json/v1/1"),
+        loggingService: LoggingService()
+    )
 }

@@ -11,10 +11,14 @@ import SwiftUI
 struct FetchProjectApp: App {
     // Only two dependencies, but would consider an IoC container in the future
     let mealsApiService = MealsApiService(baseUrl: "https://themealdb.com/api/json/v1/1") // TODO: Store url in config
+    let loggingService = LoggingService()
     
     var body: some Scene {
         WindowGroup {
-            ContentView(mealsApiService: mealsApiService)
+            ContentView(
+                mealsApiService: mealsApiService,
+                loggingService: loggingService
+            )
         }
     }
 }
