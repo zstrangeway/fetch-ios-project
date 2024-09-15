@@ -75,7 +75,7 @@ struct MealDetail: View {
 #Preview {
     MealDetail(
         mealId: "53049",
-        mealsApiService: MealsApiService(baseUrl: "https://themealdb.com/api/json/v1/1"),
+        mealsApiService: MealsApiService(baseUrl: "https://themealdb.com/api/json/v1/1", loggingService: LoggingService()),
         loggingService: LoggingService()
     )
 }
