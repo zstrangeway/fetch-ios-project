@@ -25,7 +25,7 @@
 		64D3BF6A2C93D632009B316A /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF692C93D632009B316A /* Ingredient.swift */; };
 		64D3BF6E2C962CA2009B316A /* MealListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF6D2C962CA2009B316A /* MealListViewModel.swift */; };
 		64D3BF702C962CBA009B316A /* MealDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF6F2C962CBA009B316A /* MealDetailViewModel.swift */; };
-		64D3BF722C962EFE009B316A /* TheMealDbApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF712C962EFE009B316A /* TheMealDbApiService.swift */; };
+		64D3BF722C962EFE009B316A /* MealsApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF712C962EFE009B316A /* MealsApiService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,7 +67,7 @@
 		64D3BF692C93D632009B316A /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		64D3BF6D2C962CA2009B316A /* MealListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListViewModel.swift; sourceTree = "<group>"; };
 		64D3BF6F2C962CBA009B316A /* MealDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailViewModel.swift; sourceTree = "<group>"; };
-		64D3BF712C962EFE009B316A /* TheMealDbApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMealDbApiService.swift; sourceTree = "<group>"; };
+		64D3BF712C962EFE009B316A /* MealsApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsApiService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,7 +198,7 @@
 		64D3BF6C2C962C67009B316A /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				64D3BF712C962EFE009B316A /* TheMealDbApiService.swift */,
+				64D3BF712C962EFE009B316A /* MealsApiService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -337,7 +337,7 @@
 				64D3BF592C92A37D009B316A /* MealSummary.swift in Sources */,
 				64D3BF5E2C92B660009B316A /* ListMealsResponse.swift in Sources */,
 				64D3BF602C92BFEF009B316A /* MealDetail.swift in Sources */,
-				64D3BF722C962EFE009B316A /* TheMealDbApiService.swift in Sources */,
+				64D3BF722C962EFE009B316A /* MealsApiService.swift in Sources */,
 				64D3BF662C93BC67009B316A /* MealRow.swift in Sources */,
 				64D3BF6E2C962CA2009B316A /* MealListViewModel.swift in Sources */,
 				64D3BF642C936677009B316A /* LookupMealsResponse.swift in Sources */,

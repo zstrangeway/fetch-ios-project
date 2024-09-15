@@ -8,18 +8,18 @@
 import Foundation
 
 @MainActor class MealListViewModel: ObservableObject {
-    private let theMealDbApiService: TheMealDbApiServicable
+    private let mealsApiService: MealsApiServicable
     
     @Published var meals: [MealSummary] = []
     
-    init(theMealDbApiService: TheMealDbApiServicable) {
-        self.theMealDbApiService = theMealDbApiService
+    init(mealsApiService: MealsApiServicable) {
+        self.mealsApiService = mealsApiService
         self.meals = [];
     }
     
     func loadMeals() async {
         do {
-            self.meals = try await theMealDbApiService.listMeals()
+            meals = try await mealsApiService.listMeals()
         } catch let error {
             // TODO: Properly handle error
             print("Something went wrong: \(error)")

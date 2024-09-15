@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct MealList: View {
-    private let theMealDbApiService: TheMealDbApiServicable
+    private let mealsApiService: MealsApiServicable
     @StateObject private var vm: MealListViewModel
     
-    init (theMealDbApiService: TheMealDbApiServicable) {
-        _vm = StateObject(wrappedValue: MealListViewModel(theMealDbApiService: theMealDbApiService))
-        self.theMealDbApiService = theMealDbApiService
+    init (mealsApiService: MealsApiServicable) {
+        _vm = StateObject(wrappedValue: MealListViewModel(mealsApiService: mealsApiService))
+        self.mealsApiService = mealsApiService
     }
     
     var body: some View {
@@ -21,7 +21,7 @@ struct MealList: View {
             List {
                 ForEach(vm.meals) { meal in
                     NavigationLink {
-                        MealDetail(mealId: meal.id, theMealDbApiService: self.theMealDbApiService)
+                        MealDetail(mealId: meal.id, mealsApiService: mealsApiService)
                             .id(meal.id)
                     } label: {
                         MealRow(meal: meal)
@@ -41,5 +41,5 @@ struct MealList: View {
 }
 
 #Preview {
-    MealList(theMealDbApiService: TheMealDbApiService())
+    MealList(mealsApiService: MealsApiService(baseUrl: "https://themealdb.com/api/json/v1/1"))
 }
