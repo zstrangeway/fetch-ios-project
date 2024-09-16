@@ -13,13 +13,8 @@ enum MockMealsApiServiceError: Error {
 }
 
 class MockMealsApiService: MealsApiServicable {
-    let meals: [MealSummary]?
-    let meal: Meal?
-    
-    init (meal: Meal? = nil, meals: [MealSummary]? = nil) {
-        self.meals = meals
-        self.meal = meal
-    }
+    var meals: [MealSummary]? = nil
+    var meal: Meal? = nil
     
     func listMeals() async throws -> [MealSummary] {
         guard let strongMeals = meals else {

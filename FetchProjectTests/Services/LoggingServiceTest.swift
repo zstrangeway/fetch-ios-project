@@ -13,9 +13,18 @@ final class LoggingServiceTest: XCTestCase {
         case testError
     }
     
+    var loggingService: LoggingService!
+    
+    override func setUpWithError() throws {
+        loggingService = LoggingService()
+    }
+
+    override func tearDownWithError() throws {
+        loggingService = nil
+    }
+    
     func test_LoggingServiceTest_debug_printsStringWithStack() throws {
         // Given
-        let loggingService = LoggingService()
         let message = UUID().uuidString
         let stack = TestError.testError
         
@@ -29,7 +38,6 @@ final class LoggingServiceTest: XCTestCase {
     
     func test_LoggingServiceTest_debug_printsStringWithoutStack() throws {
         // Given
-        let loggingService = LoggingService()
         let message = UUID().uuidString
         
         // When
@@ -42,7 +50,6 @@ final class LoggingServiceTest: XCTestCase {
 
     func test_LoggingServiceTest_error_printsStringWithStack() throws {
         // Given
-        let loggingService = LoggingService()
         let message = UUID().uuidString
         let stack = TestError.testError
         
@@ -56,7 +63,6 @@ final class LoggingServiceTest: XCTestCase {
     
     func test_LoggingServiceTest_error_printsStringWithoutStack() throws {
         // Given
-        let loggingService = LoggingService()
         let message = UUID().uuidString
         
         // When
