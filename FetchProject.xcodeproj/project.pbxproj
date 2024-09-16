@@ -11,12 +11,14 @@
 		647EE6C02C92995100EFA3EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647EE6BF2C92995100EFA3EA /* ContentView.swift */; };
 		647EE6C22C92995300EFA3EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 647EE6C12C92995300EFA3EA /* Assets.xcassets */; };
 		647EE6C52C92995300EFA3EA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 647EE6C42C92995300EFA3EA /* Preview Assets.xcassets */; };
-		647EE6CF2C92995300EFA3EA /* FetchProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647EE6CE2C92995300EFA3EA /* FetchProjectTests.swift */; };
 		647EE6D92C92995300EFA3EA /* FetchProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647EE6D82C92995300EFA3EA /* FetchProjectUITests.swift */; };
 		647EE6DB2C92995300EFA3EA /* FetchProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647EE6DA2C92995300EFA3EA /* FetchProjectUITestsLaunchTests.swift */; };
 		649BAAAF2C9777D90050881A /* LoggingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649BAAAE2C9777D90050881A /* LoggingService.swift */; };
 		649BAAB12C97B1690050881A /* MealSummaryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649BAAB02C97B1690050881A /* MealSummaryDTO.swift */; };
 		649BAAB32C97B1860050881A /* MealDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649BAAB22C97B1860050881A /* MealDTO.swift */; };
+		649BAAB52C97DB6F0050881A /* MealsListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649BAAB42C97DB6F0050881A /* MealsListViewModelTests.swift */; };
+		649BAAB72C97E6720050881A /* MockMealsApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649BAAB62C97E6720050881A /* MockMealsApiService.swift */; };
+		649BAAB92C97EF680050881A /* MockLoggingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649BAAB82C97EF680050881A /* MockLoggingService.swift */; };
 		64D3BF592C92A37D009B316A /* MealSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF582C92A37D009B316A /* MealSummary.swift */; };
 		64D3BF5B2C92AF99009B316A /* MealList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF5A2C92AF99009B316A /* MealList.swift */; };
 		64D3BF5E2C92B660009B316A /* ListMealsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF5D2C92B660009B316A /* ListMealsResponseDTO.swift */; };
@@ -55,13 +57,15 @@
 		647EE6C12C92995300EFA3EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		647EE6C42C92995300EFA3EA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		647EE6CA2C92995300EFA3EA /* FetchProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FetchProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		647EE6CE2C92995300EFA3EA /* FetchProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProjectTests.swift; sourceTree = "<group>"; };
 		647EE6D42C92995300EFA3EA /* FetchProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FetchProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		647EE6D82C92995300EFA3EA /* FetchProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProjectUITests.swift; sourceTree = "<group>"; };
 		647EE6DA2C92995300EFA3EA /* FetchProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		649BAAAE2C9777D90050881A /* LoggingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingService.swift; sourceTree = "<group>"; };
 		649BAAB02C97B1690050881A /* MealSummaryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealSummaryDTO.swift; sourceTree = "<group>"; };
 		649BAAB22C97B1860050881A /* MealDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDTO.swift; sourceTree = "<group>"; };
+		649BAAB42C97DB6F0050881A /* MealsListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsListViewModelTests.swift; sourceTree = "<group>"; };
+		649BAAB62C97E6720050881A /* MockMealsApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMealsApiService.swift; sourceTree = "<group>"; };
+		649BAAB82C97EF680050881A /* MockLoggingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLoggingService.swift; sourceTree = "<group>"; };
 		64D3BF582C92A37D009B316A /* MealSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealSummary.swift; sourceTree = "<group>"; };
 		64D3BF5A2C92AF99009B316A /* MealList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealList.swift; sourceTree = "<group>"; };
 		64D3BF5D2C92B660009B316A /* ListMealsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMealsResponseDTO.swift; sourceTree = "<group>"; };
@@ -146,7 +150,9 @@
 		647EE6CD2C92995300EFA3EA /* FetchProjectTests */ = {
 			isa = PBXGroup;
 			children = (
-				647EE6CE2C92995300EFA3EA /* FetchProjectTests.swift */,
+				649BAAB42C97DB6F0050881A /* MealsListViewModelTests.swift */,
+				649BAAB62C97E6720050881A /* MockMealsApiService.swift */,
+				649BAAB82C97EF680050881A /* MockLoggingService.swift */,
 			);
 			path = FetchProjectTests;
 			sourceTree = "<group>";
@@ -366,7 +372,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				647EE6CF2C92995300EFA3EA /* FetchProjectTests.swift in Sources */,
+				649BAAB52C97DB6F0050881A /* MealsListViewModelTests.swift in Sources */,
+				649BAAB92C97EF680050881A /* MockLoggingService.swift in Sources */,
+				649BAAB72C97E6720050881A /* MockMealsApiService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

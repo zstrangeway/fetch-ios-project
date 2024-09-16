@@ -46,7 +46,7 @@ class MealsApiService: MealsApiServicable {
         do {
             let decoder = JSONDecoder()
             let responseDTO = try decoder.decode(ListMealsResponseDTO.self, from: data)
-            return try processListMealsResponseDTO(responseDTO)
+            return try transformListMealsResponseDTO(responseDTO)
         } catch let error {
             loggingService.error("unable to decode data into ListMealsResponse: \(data)", stack: error)
             throw MealsApiError.invalidData
@@ -71,14 +71,14 @@ class MealsApiService: MealsApiServicable {
         do {
             let decoder = JSONDecoder()
             let responseDTO = try decoder.decode(LookupMealsResponseDTO.self, from: data)
-            return try processLookupMealsResponseDTO(responseDTO)
+            return try tranformLookupMealsResponseDTO(responseDTO)
         } catch let error {
             loggingService.error("unable to decode data into LookupMealsResponse: \(data)", stack: error)
             throw MealsApiError.invalidData
         }
     }
     
-    private func processListMealsResponseDTO(_ dto: ListMealsResponseDTO) throws -> [MealSummary] {
+    private func transformListMealsResponseDTO(_ dto: ListMealsResponseDTO) throws -> [MealSummary] {
         guard let mealSummaryDTOs: [MealSummaryDTO] = dto.meals.filter({ $0 != nil }) as? [MealSummaryDTO] else {
             throw MealsApiError.invalidData
         }
@@ -90,7 +90,7 @@ class MealsApiService: MealsApiServicable {
         )}
     }
     
-    private func processLookupMealsResponseDTO(_ dto: LookupMealsResponseDTO) throws -> Meal {
+    private func tranformLookupMealsResponseDTO(_ dto: LookupMealsResponseDTO) throws -> Meal {
         guard dto.meals.count > 0 else {
             // This should never happen... theoretically an invalid id should return a 404 response and would trigger an earlier exception
             throw MealsApiError.mealNotFound
