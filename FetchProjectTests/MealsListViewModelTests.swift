@@ -72,7 +72,7 @@ final class MealsListViewModelTests: XCTestCase {
         XCTAssertEqual(vm.meals, expected)
     }
     
-    @MainActor func test_MealListViewModel_loadMeals_shouldLogErrors() async throws {
+    @MainActor func test_MealListViewModel_loadMeals_shouldLogError() async throws {
         // Given
         let loggingService = MockLoggingService()
         let mealsApiService = MockMealsApiService(meals: nil)
