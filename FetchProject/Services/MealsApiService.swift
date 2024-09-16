@@ -92,7 +92,7 @@ class MealsApiService: MealsApiServicable {
     
     private func tranformLookupMealsResponseDTO(_ dto: LookupMealsResponseDTO) throws -> Meal {
         guard dto.meals.count > 0 else {
-            // This should never happen... theoretically an invalid id should return a 404 response and would trigger an earlier exception
+            // This should never happen... an invalid id should return a 404 response and trigger an earlier exception
             throw MealsApiError.mealNotFound
         }
         

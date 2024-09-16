@@ -20,6 +20,7 @@
 		649BAAB72C97E6720050881A /* MockMealsApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649BAAB62C97E6720050881A /* MockMealsApiService.swift */; };
 		649BAAB92C97EF680050881A /* MockLoggingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649BAAB82C97EF680050881A /* MockLoggingService.swift */; };
 		649BAABB2C97FB3E0050881A /* MealDetailViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649BAABA2C97FB3E0050881A /* MealDetailViewModelTest.swift */; };
+		649BAABD2C9805120050881A /* LoggingServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649BAABC2C9805120050881A /* LoggingServiceTest.swift */; };
 		64D3BF592C92A37D009B316A /* MealSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF582C92A37D009B316A /* MealSummary.swift */; };
 		64D3BF5B2C92AF99009B316A /* MealList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF5A2C92AF99009B316A /* MealList.swift */; };
 		64D3BF5E2C92B660009B316A /* ListMealsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF5D2C92B660009B316A /* ListMealsResponseDTO.swift */; };
@@ -68,6 +69,7 @@
 		649BAAB62C97E6720050881A /* MockMealsApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMealsApiService.swift; sourceTree = "<group>"; };
 		649BAAB82C97EF680050881A /* MockLoggingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLoggingService.swift; sourceTree = "<group>"; };
 		649BAABA2C97FB3E0050881A /* MealDetailViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailViewModelTest.swift; sourceTree = "<group>"; };
+		649BAABC2C9805120050881A /* LoggingServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingServiceTest.swift; sourceTree = "<group>"; };
 		64D3BF582C92A37D009B316A /* MealSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealSummary.swift; sourceTree = "<group>"; };
 		64D3BF5A2C92AF99009B316A /* MealList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealList.swift; sourceTree = "<group>"; };
 		64D3BF5D2C92B660009B316A /* ListMealsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMealsResponseDTO.swift; sourceTree = "<group>"; };
@@ -152,10 +154,9 @@
 		647EE6CD2C92995300EFA3EA /* FetchProjectTests */ = {
 			isa = PBXGroup;
 			children = (
-				649BAAB42C97DB6F0050881A /* MealsListViewModelTests.swift */,
-				649BAAB62C97E6720050881A /* MockMealsApiService.swift */,
-				649BAABA2C97FB3E0050881A /* MealDetailViewModelTest.swift */,
-				649BAAB82C97EF680050881A /* MockLoggingService.swift */,
+				649BAABF2C9805420050881A /* Mocks */,
+				649BAABE2C98052C0050881A /* Services */,
+				649BAAC02C9805480050881A /* ViewModels */,
 			);
 			path = FetchProjectTests;
 			sourceTree = "<group>";
@@ -169,16 +170,42 @@
 			path = FetchProjectUITests;
 			sourceTree = "<group>";
 		};
+		649BAABE2C98052C0050881A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				649BAABC2C9805120050881A /* LoggingServiceTest.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		649BAABF2C9805420050881A /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				649BAAB82C97EF680050881A /* MockLoggingService.swift */,
+				649BAAB62C97E6720050881A /* MockMealsApiService.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		649BAAC02C9805480050881A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				649BAABA2C97FB3E0050881A /* MealDetailViewModelTest.swift */,
+				649BAAB42C97DB6F0050881A /* MealsListViewModelTests.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		64D3BF522C92A2F8009B316A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				64D3BF612C9365D4009B316A /* Meal.swift */,
 				64D3BF692C93D632009B316A /* Ingredient.swift */,
-				64D3BF582C92A37D009B316A /* MealSummary.swift */,
 				64D3BF5D2C92B660009B316A /* ListMealsResponseDTO.swift */,
-				649BAAB02C97B1690050881A /* MealSummaryDTO.swift */,
-				649BAAB22C97B1860050881A /* MealDTO.swift */,
 				64D3BF632C936677009B316A /* LookupMealsResponseDTO.swift */,
+				64D3BF612C9365D4009B316A /* Meal.swift */,
+				649BAAB22C97B1860050881A /* MealDTO.swift */,
+				64D3BF582C92A37D009B316A /* MealSummary.swift */,
+				649BAAB02C97B1690050881A /* MealSummaryDTO.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -206,8 +233,8 @@
 		64D3BF6B2C962AA6009B316A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				64D3BF6D2C962CA2009B316A /* MealListViewModel.swift */,
 				64D3BF6F2C962CBA009B316A /* MealDetailViewModel.swift */,
+				64D3BF6D2C962CA2009B316A /* MealListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -215,8 +242,8 @@
 		64D3BF6C2C962C67009B316A /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				64D3BF712C962EFE009B316A /* MealsApiService.swift */,
 				649BAAAE2C9777D90050881A /* LoggingService.swift */,
+				64D3BF712C962EFE009B316A /* MealsApiService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -379,6 +406,7 @@
 				649BAAB92C97EF680050881A /* MockLoggingService.swift in Sources */,
 				649BAABB2C97FB3E0050881A /* MealDetailViewModelTest.swift in Sources */,
 				649BAAB72C97E6720050881A /* MockMealsApiService.swift in Sources */,
+				649BAABD2C9805120050881A /* LoggingServiceTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
