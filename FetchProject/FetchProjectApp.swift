@@ -11,6 +11,7 @@ import SwiftUI
 struct FetchProjectApp: App {
     // Only two dependencies, but would consider an IoC container in the future to keep things manageable
     // TODO: Store url in config
+    let urlSession = URLSession.shared
     let loggingService: LoggingService
     let mealsApiService: MealsApiService
     
@@ -21,7 +22,8 @@ struct FetchProjectApp: App {
         self.loggingService = loggingService
         self.mealsApiService = MealsApiService(
             baseUrl: "https://themealdb.com/api/json/v1/1",
-            loggingService: loggingService
+            loggingService: loggingService,
+            urlSession: urlSession
         )
     }
     

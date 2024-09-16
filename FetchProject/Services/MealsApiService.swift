@@ -22,10 +22,12 @@ protocol MealsApiServicable {
 class MealsApiService: MealsApiServicable {
     let loggingService: LoggingServicable
     let baseUrl: String
+    let urlSession: URLSession
     
-    init(baseUrl: String, loggingService: LoggingServicable) {
+    init(baseUrl: String, loggingService: LoggingServicable, urlSession: URLSession) {
         self.baseUrl = baseUrl
         self.loggingService = loggingService
+        self.urlSession = urlSession
     }
     
     func listMeals() async throws -> [MealSummary] {
@@ -36,7 +38,7 @@ class MealsApiService: MealsApiServicable {
             throw MealsApiError.invalidUrl
         }
         
-        let (data, response) = try await URLSession.shared.data(from: url)
+        let (data, response) = try await urlSession.data(from: url)
         
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
             loggingService.error("Invalid Response: \(response)", stack: nil)
@@ -61,7 +63,7 @@ class MealsApiService: MealsApiServicable {
             throw MealsApiError.invalidUrl
         }
         
-        let (data, response) = try await URLSession.shared.data(from: url)
+        let (data, response) = try await urlSession.data(from: url)
         
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
             loggingService.error("Invalid Response: \(response)", stack: nil)

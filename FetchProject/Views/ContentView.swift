@@ -23,7 +23,7 @@ struct ContentView: View {
 
 #Preview {
     ContentView(
-        mealsApiService: MealsApiService(baseUrl: "https://themealdb.com/api/json/v1/1", loggingService: LoggingService()),
+        mealsApiService: MealsApiService(baseUrl: "https://themealdb.com/api/json/v1/1", loggingService: LoggingService(), urlSession: URLSession.shared),
         loggingService: LoggingService()
     )
 }
