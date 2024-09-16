@@ -11,6 +11,7 @@ enum MealsApiError: Error {
     case invalidUrl
     case invalidResponse
     case invalidData
+    case mealNotFound
 }
 
 protocol MealsApiServicable {
@@ -44,8 +45,8 @@ class MealsApiService: MealsApiServicable {
         
         do {
             let decoder = JSONDecoder()
-            return try decoder.decode(ListMealsResponse.self, from: data).meals
-            // TODO: Filter out null/invalid elements
+            let responseDTO = try decoder.decode(ListMealsResponseDTO.self, from: data)
+            return try processListMealsResponseDTO(responseDTO)
         } catch let error {
             loggingService.error("unable to decode data into ListMealsResponse: \(data)", stack: error)
             throw MealsApiError.invalidData
@@ -69,11 +70,80 @@ class MealsApiService: MealsApiServicable {
         
         do {
             let decoder = JSONDecoder()
-            return try decoder.decode(LookupMealsResponse.self, from: data).meals[0]
-            // TODO: Filter out null/invalid elements and safely access index 0
+            let responseDTO = try decoder.decode(LookupMealsResponseDTO.self, from: data)
+            return try processLookupMealsResponseDTO(responseDTO)
         } catch let error {
             loggingService.error("unable to decode data into LookupMealsResponse: \(data)", stack: error)
             throw MealsApiError.invalidData
         }
+    }
+    
+    private func processListMealsResponseDTO(_ dto: ListMealsResponseDTO) throws -> [MealSummary] {
+        guard let mealSummaryDTOs: [MealSummaryDTO] = dto.meals.filter({ $0 != nil }) as? [MealSummaryDTO] else {
+            throw MealsApiError.invalidData
+        }
+        
+        return mealSummaryDTOs.map{MealSummary(
+            id: $0.idMeal,
+            name: $0.strMeal,
+            thumbUrl: URL(string: $0.strMealThumb)
+        )}
+    }
+    
+    private func processLookupMealsResponseDTO(_ dto: LookupMealsResponseDTO) throws -> Meal {
+        guard dto.meals.count > 0 else {
+            // This should never happen... theoretically an invalid id should return a 404 response and would trigger an earlier exception
+            throw MealsApiError.mealNotFound
+        }
+        
+        let mealDTO = dto.meals[0]
+        
+        var ingredients: [Ingredient] {
+            let rawIngredients = [
+                (mealDTO.strIngredient1, mealDTO.strMeasure1),
+                (mealDTO.strIngredient2, mealDTO.strMeasure2),
+                (mealDTO.strIngredient3, mealDTO.strMeasure3),
+                (mealDTO.strIngredient4, mealDTO.strMeasure4),
+                (mealDTO.strIngredient5, mealDTO.strMeasure5),
+                (mealDTO.strIngredient6, mealDTO.strMeasure6),
+                (mealDTO.strIngredient7, mealDTO.strMeasure7),
+                (mealDTO.strIngredient8, mealDTO.strMeasure8),
+                (mealDTO.strIngredient9, mealDTO.strMeasure9),
+                (mealDTO.strIngredient10, mealDTO.strMeasure10),
+                (mealDTO.strIngredient11, mealDTO.strMeasure11),
+                (mealDTO.strIngredient12, mealDTO.strMeasure12),
+                (mealDTO.strIngredient13, mealDTO.strMeasure13),
+                (mealDTO.strIngredient14, mealDTO.strMeasure14),
+                (mealDTO.strIngredient15, mealDTO.strMeasure15),
+                (mealDTO.strIngredient16, mealDTO.strMeasure16),
+                (mealDTO.strIngredient17, mealDTO.strMeasure17),
+                (mealDTO.strIngredient18, mealDTO.strMeasure18),
+                (mealDTO.strIngredient19, mealDTO.strMeasure19),
+                (mealDTO.strIngredient20, mealDTO.strMeasure20),
+            ]
+            
+            var id = 0;
+            
+            return rawIngredients.filter { (name, measurement) in
+                guard name != nil, name != "", measurement != nil, measurement != "" else {
+                    return false
+                }
+                return true
+            }
+            .map { (name, measurement) in
+                id += 1
+                return Ingredient(id: id, name: name ?? "", measurement: measurement ?? "")
+            }
+        }
+        
+        return Meal(
+            id: mealDTO.idMeal,
+            name: mealDTO.strMeal,
+            thumbUrl: URL(string: mealDTO.strMealThumb),
+            category: mealDTO.strCategory,
+            area: mealDTO.strArea,
+            instructions: mealDTO.strInstructions,
+            ingredients: ingredients
+        )
     }
 }

@@ -7,20 +7,8 @@
 
 import Foundation
 
-struct MealSummary: Codable, Identifiable, Hashable {
-    private let idMeal: String
-    private let strMeal: String
-    private let strMealThumb: String
-    
-    var id: String {
-        return idMeal
-    }
-
-    var name: String {
-        return strMeal
-    }
-    
-    var thumbUrl: URL? {
-        return URL(string: strMealThumb)
-    }
+struct MealSummary: Identifiable, Hashable {
+    let id: String
+    let name: String
+    let thumbUrl: URL?
 }

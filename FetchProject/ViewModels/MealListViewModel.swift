@@ -8,15 +8,15 @@
 import Foundation
 
 @MainActor class MealListViewModel: ObservableObject {
-    private let mealsApiService: MealsApiServicable
-    private let loggingService: LoggingServicable
+    let mealsApiService: MealsApiServicable
+    let loggingService: LoggingServicable
     
     @Published var meals: [MealSummary] = []
     
-    init(mealsApiService: MealsApiServicable, loggingService: LoggingServicable) {
+    init(meals: [MealSummary] = [], mealsApiService: MealsApiServicable, loggingService: LoggingServicable) {
         self.mealsApiService = mealsApiService
         self.loggingService = loggingService
-        self.meals = [];
+        self.meals = meals;
     }
     
     func loadMeals() async {

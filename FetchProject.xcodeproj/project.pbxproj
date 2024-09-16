@@ -15,12 +15,14 @@
 		647EE6D92C92995300EFA3EA /* FetchProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647EE6D82C92995300EFA3EA /* FetchProjectUITests.swift */; };
 		647EE6DB2C92995300EFA3EA /* FetchProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647EE6DA2C92995300EFA3EA /* FetchProjectUITestsLaunchTests.swift */; };
 		649BAAAF2C9777D90050881A /* LoggingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649BAAAE2C9777D90050881A /* LoggingService.swift */; };
+		649BAAB12C97B1690050881A /* MealSummaryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649BAAB02C97B1690050881A /* MealSummaryDTO.swift */; };
+		649BAAB32C97B1860050881A /* MealDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649BAAB22C97B1860050881A /* MealDTO.swift */; };
 		64D3BF592C92A37D009B316A /* MealSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF582C92A37D009B316A /* MealSummary.swift */; };
 		64D3BF5B2C92AF99009B316A /* MealList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF5A2C92AF99009B316A /* MealList.swift */; };
-		64D3BF5E2C92B660009B316A /* ListMealsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF5D2C92B660009B316A /* ListMealsResponse.swift */; };
+		64D3BF5E2C92B660009B316A /* ListMealsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF5D2C92B660009B316A /* ListMealsResponseDTO.swift */; };
 		64D3BF602C92BFEF009B316A /* MealDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF5F2C92BFEF009B316A /* MealDetail.swift */; };
 		64D3BF622C9365D4009B316A /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF612C9365D4009B316A /* Meal.swift */; };
-		64D3BF642C936677009B316A /* LookupMealsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF632C936677009B316A /* LookupMealsResponse.swift */; };
+		64D3BF642C936677009B316A /* LookupMealsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF632C936677009B316A /* LookupMealsResponseDTO.swift */; };
 		64D3BF662C93BC67009B316A /* MealRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF652C93BC67009B316A /* MealRow.swift */; };
 		64D3BF682C93C9A2009B316A /* MealDetailTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF672C93C9A2009B316A /* MealDetailTitle.swift */; };
 		64D3BF6A2C93D632009B316A /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D3BF692C93D632009B316A /* Ingredient.swift */; };
@@ -58,12 +60,14 @@
 		647EE6D82C92995300EFA3EA /* FetchProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProjectUITests.swift; sourceTree = "<group>"; };
 		647EE6DA2C92995300EFA3EA /* FetchProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		649BAAAE2C9777D90050881A /* LoggingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingService.swift; sourceTree = "<group>"; };
+		649BAAB02C97B1690050881A /* MealSummaryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealSummaryDTO.swift; sourceTree = "<group>"; };
+		649BAAB22C97B1860050881A /* MealDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDTO.swift; sourceTree = "<group>"; };
 		64D3BF582C92A37D009B316A /* MealSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealSummary.swift; sourceTree = "<group>"; };
 		64D3BF5A2C92AF99009B316A /* MealList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealList.swift; sourceTree = "<group>"; };
-		64D3BF5D2C92B660009B316A /* ListMealsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMealsResponse.swift; sourceTree = "<group>"; };
+		64D3BF5D2C92B660009B316A /* ListMealsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMealsResponseDTO.swift; sourceTree = "<group>"; };
 		64D3BF5F2C92BFEF009B316A /* MealDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetail.swift; sourceTree = "<group>"; };
 		64D3BF612C9365D4009B316A /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
-		64D3BF632C936677009B316A /* LookupMealsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupMealsResponse.swift; sourceTree = "<group>"; };
+		64D3BF632C936677009B316A /* LookupMealsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupMealsResponseDTO.swift; sourceTree = "<group>"; };
 		64D3BF652C93BC67009B316A /* MealRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealRow.swift; sourceTree = "<group>"; };
 		64D3BF672C93C9A2009B316A /* MealDetailTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailTitle.swift; sourceTree = "<group>"; };
 		64D3BF692C93D632009B316A /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
@@ -162,8 +166,10 @@
 				64D3BF612C9365D4009B316A /* Meal.swift */,
 				64D3BF692C93D632009B316A /* Ingredient.swift */,
 				64D3BF582C92A37D009B316A /* MealSummary.swift */,
-				64D3BF5D2C92B660009B316A /* ListMealsResponse.swift */,
-				64D3BF632C936677009B316A /* LookupMealsResponse.swift */,
+				64D3BF5D2C92B660009B316A /* ListMealsResponseDTO.swift */,
+				649BAAB02C97B1690050881A /* MealSummaryDTO.swift */,
+				649BAAB22C97B1860050881A /* MealDTO.swift */,
+				64D3BF632C936677009B316A /* LookupMealsResponseDTO.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -338,12 +344,14 @@
 			files = (
 				647EE6C02C92995100EFA3EA /* ContentView.swift in Sources */,
 				64D3BF592C92A37D009B316A /* MealSummary.swift in Sources */,
-				64D3BF5E2C92B660009B316A /* ListMealsResponse.swift in Sources */,
+				64D3BF5E2C92B660009B316A /* ListMealsResponseDTO.swift in Sources */,
+				649BAAB12C97B1690050881A /* MealSummaryDTO.swift in Sources */,
 				64D3BF602C92BFEF009B316A /* MealDetail.swift in Sources */,
 				64D3BF722C962EFE009B316A /* MealsApiService.swift in Sources */,
+				649BAAB32C97B1860050881A /* MealDTO.swift in Sources */,
 				64D3BF662C93BC67009B316A /* MealRow.swift in Sources */,
 				64D3BF6E2C962CA2009B316A /* MealListViewModel.swift in Sources */,
-				64D3BF642C936677009B316A /* LookupMealsResponse.swift in Sources */,
+				64D3BF642C936677009B316A /* LookupMealsResponseDTO.swift in Sources */,
 				649BAAAF2C9777D90050881A /* LoggingService.swift in Sources */,
 				64D3BF682C93C9A2009B316A /* MealDetailTitle.swift in Sources */,
 				64D3BF622C9365D4009B316A /* Meal.swift in Sources */,
