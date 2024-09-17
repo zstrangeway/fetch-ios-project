@@ -12,6 +12,7 @@ import Foundation
     let loggingService: LoggingServicable
     
     @Published var meals: [MealSummary] = []
+    @Published var isLoading: Bool = false    
     
     init(meals: [MealSummary] = [], mealsApiService: MealsApiServicable, loggingService: LoggingServicable) {
         self.mealsApiService = mealsApiService
@@ -20,12 +21,13 @@ import Foundation
     }
     
     func loadMeals() async {
+        isLoading = true
         do {
-            // TODO: loading state
             meals = try await mealsApiService.listMeals().meals
         } catch let error {
             loggingService.debug("Failed to load meals", stack: error)
             // TODO: Display some sort of error to user
         }
+        isLoading = false
     }
 }

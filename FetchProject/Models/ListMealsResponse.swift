@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ListMealsResponse: Equatable {
+struct ListMealsResponse: Equatable, DecodableFromDTO {
     let meals: [MealSummary]
 }
 

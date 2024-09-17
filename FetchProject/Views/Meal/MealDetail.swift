@@ -20,52 +20,58 @@ struct MealDetail: View {
     // TODO: Make a better looking loading experience, with skeletons perhaps
     var body: some View {
         ScrollView {
-            AsyncImage(url: vm.meal?.thumbUrl) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    
-            } placeholder: {
-                Rectangle()
-                    .foregroundColor(.secondary)
-            }
-                .frame(height: 300)
-                .clipped()
-                .overlay(
-                    MealDetailTitle(
-                        name: vm.meal?.name ?? "loading...",
-                        category: vm.meal?.category ?? "loading...",
-                        area: vm.meal?.area ?? "loading..."
-                    ),
-                    alignment: .bottomLeading
-                )
-            
-            VStack(alignment: .leading, spacing: 20) {
-                Text("Ingredients:")
-                    .font(.title2)
+            if vm.isLoading {
+                Text("Loading")
+            } else if let meal = vm.meal {
+                AsyncImage(url: meal.thumbUrl) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        
+                } placeholder: {
+                    Rectangle()
+                        .foregroundColor(.secondary)
+                }
+                    .frame(height: 300)
+                    .clipped()
+                    .overlay(
+                        MealDetailTitle(
+                            name: meal.name,
+                            category: meal.category,
+                            area: meal.area
+                        ),
+                        alignment: .bottomLeading
+                    )
                 
                 VStack(alignment: .leading, spacing: 20) {
-                    ForEach(vm.meal?.ingredients ?? []) { ingredient in
-                        HStack {
-                            Text(ingredient.measurement)
-                            Text(ingredient.name)
-                                .fontWeight(.bold)
-                            Spacer()
+                    Text("Ingredients:")
+                        .font(.title2)
+                    
+                    VStack(alignment: .leading, spacing: 20) {
+                        ForEach(meal.ingredients) { ingredient in
+                            HStack {
+                                Text(ingredient.measurement)
+                                Text(ingredient.name)
+                                    .fontWeight(.bold)
+                                Spacer()
+                            }
                         }
                     }
+                        .padding()
+                        .background(.gray.opacity(0.2))
+                        .cornerRadius(8)
+                    
+                    Text("Instructions:")
+                        .font(.title2)
+                    
+                    Text(meal.instructions)
                 }
                     .padding()
-                    .background(.gray.opacity(0.2))
-                    .cornerRadius(8)
-                
-                Text("Instructions:")
-                    .font(.title2)
-                
-                Text(vm.meal?.instructions ?? "loading...")
+            } else {
+                Text("Meal Not Found")
             }
-                .padding()
         }
-            .navigationTitle(vm.meal?.name ?? "loading...")
+            .navigationTitle(vm.navigationTitle)
             .navigationBarTitleDisplayMode(.inline)
             .task {
                 await vm.loadMeal(withId: mealId)

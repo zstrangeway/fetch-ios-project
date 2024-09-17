@@ -12,23 +12,24 @@ protocol LoggingServicable {
     func error(_ message: String, stack: Error?)
 }
 
+enum LogLevel: String {
+    case debug = "DEBUG"
+    case error = "ERROR"
+}
+
 // This is just a mocked service to simulate a Logger
 struct LoggingService: LoggingServicable {
     func debug(_ message: String, stack: Error? = nil) {
-        var logStatement = "=============================="
-        logStatement += "\nDEBUG LOG"
-        logStatement += "\nMESSAGE: \(message)"
-        
-        if (stack != nil) {
-            logStatement += "\nSTACK:\n\(stack!)"
-        }
-        
-        print(logStatement)
+        log(message, stack: stack, level: .debug)
     }
     
     func error(_ message: String, stack: Error? = nil) {
+        log(message, stack: stack, level: .error)
+    }
+    
+    func log (_ message: String, stack: Error? = nil, level: LogLevel) {
         var logStatement = "=============================="
-        logStatement += "\nERROR LOG"
+        logStatement += "\n\(level.rawValue) LOG"
         logStatement += "\nMESSAGE: \(message)"
         
         if (stack != nil) {
@@ -37,6 +38,4 @@ struct LoggingService: LoggingServicable {
         
         print(logStatement)
     }
-    
-    // TODO: create log funtion to clean this up
 }

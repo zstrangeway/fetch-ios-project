@@ -9,8 +9,8 @@ import XCTest
 @testable import FetchProject
 
 final class LoggingServiceTest: XCTestCase {
-    enum TestError: Error {
-        case testError
+    enum MockError: Error {
+        case mockError
     }
     
     var loggingService: LoggingService!
@@ -27,7 +27,7 @@ final class LoggingServiceTest: XCTestCase {
     func test_LoggingServiceTest_debug_printsStringWithStack() throws {
         // Given
         let message = UUID().uuidString
-        let stack = TestError.testError
+        let stack = MockError.mockError
         
         // When
         loggingService.debug(message, stack: stack)
@@ -52,7 +52,7 @@ final class LoggingServiceTest: XCTestCase {
     func test_LoggingServiceTest_error_printsStringWithStack() throws {
         // Given
         let message = UUID().uuidString
-        let stack = TestError.testError
+        let stack = MockError.mockError
         
         // When
         loggingService.error(message, stack: stack)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LookupMealsResponse: Equatable {
+struct LookupMealsResponse: Equatable, DecodableFromDTO {
     let meals: [Meal]
 }
 

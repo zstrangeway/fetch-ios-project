@@ -16,7 +16,6 @@ struct FetchProjectApp: App {
     let loggingService: LoggingService
     let mealsApiService: MealsApiService
     
-    
     init () {
         self.loggingService = LoggingService()
         self.mealsApiService = MealsApiService(

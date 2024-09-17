@@ -21,16 +21,25 @@ struct MealList: View {
     var body: some View {
         NavigationSplitView {
             List {
-                ForEach(vm.meals) { meal in
-                    NavigationLink {
-                        MealDetail(
-                            mealId: meal.id,
-                            mealsApiService: mealsApiService,
-                            loggingService: loggingService
-                        )
-                            .id(meal.id)
-                    } label: {
-                        MealRow(meal: meal)
+                if vm.isLoading {
+                    // TODO: Could be prettier
+                    Text("Loading")
+                }
+                else if vm.meals.isEmpty {
+                    // TODO: Could be prettier
+                    Text("No Desserts Found")
+                } else {
+                    ForEach(vm.meals) { meal in
+                        NavigationLink {
+                            MealDetail( 
+                                mealId: meal.id,
+                                mealsApiService: mealsApiService,
+                                loggingService: loggingService
+                            )
+                                .id(meal.id)
+                        } label: {
+                            MealRow(meal: meal)
+                        }
                     }
                 }
             }
