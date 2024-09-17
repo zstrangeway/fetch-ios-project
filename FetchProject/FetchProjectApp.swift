@@ -7,21 +7,20 @@
 
 import SwiftUI
 
+let BASE_URL = "https://themealdb.com/api/json/v1/1" // TODO: Store url in config
+
 @main
 struct FetchProjectApp: App {
-    // Only two dependencies, but would consider an IoC container in the future to keep things manageable
-    // TODO: Store url in config
+    // TODO: Create IoC Container
     let urlSession = URLSession.shared
     let loggingService: LoggingService
     let mealsApiService: MealsApiService
     
     
     init () {
-        let loggingService = LoggingService()
-        
-        self.loggingService = loggingService
+        self.loggingService = LoggingService()
         self.mealsApiService = MealsApiService(
-            baseUrl: "https://themealdb.com/api/json/v1/1",
+            baseUrl: BASE_URL,
             loggingService: loggingService,
             urlSession: urlSession
         )

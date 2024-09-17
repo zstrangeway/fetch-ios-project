@@ -21,7 +21,14 @@ class MealDetailViewModel: ObservableObject {
     
     func loadMeal(withId mealId: String) async {
         do {
-            meal = try await mealsApiService.getMeal(withId: mealId)
+            // TODO: loading state
+            let response = try await mealsApiService.getMeal(withId: mealId)
+            if !response.meals.isEmpty {
+                meal = response.meals[0]
+            } else {
+                meal = nil
+                // TODO: Need some sort of meal not found state?
+            }
         } catch let error {
             loggingService.debug("Failed to load mealId: \(mealId)", stack: error)
             // TODO: Display some sort of error to user

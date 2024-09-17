@@ -24,7 +24,7 @@ struct MealRow: View {
             }
                 .frame(width: IMAGE_SIZE, height: IMAGE_SIZE)
             
-            Text(meal?.name ?? "Dessert")
+            Text(meal?.name ?? "")
         }
         
     }

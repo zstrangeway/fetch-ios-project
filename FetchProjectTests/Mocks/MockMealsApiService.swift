@@ -13,22 +13,22 @@ enum MockMealsApiServiceError: Error {
 }
 
 class MockMealsApiService: MealsApiServicable {
-    var meals: [MealSummary]? = nil
-    var meal: Meal? = nil
+    var listMealsResponse: ListMealsResponse? = nil
+    var lookupMealsResponse: LookupMealsResponse? = nil
     
-    func listMeals() async throws -> [MealSummary] {
-        guard let strongMeals = meals else {
+    func listMeals() async throws -> ListMealsResponse {
+        guard let strongResponse = listMealsResponse else {
             throw MockMealsApiServiceError.mockNotSetUp
         }
         
-        return strongMeals
+        return strongResponse
     }
     
-    func getMeal(withId mealId: String) async throws -> Meal {
-        guard let strongMeal = meal else {
+    func getMeal(withId mealId: String) async throws -> LookupMealsResponse {
+        guard let strongResponse = lookupMealsResponse else {
             throw MockMealsApiServiceError.mockNotSetUp
         }
         
-        return strongMeal
+        return strongResponse
     }
 }

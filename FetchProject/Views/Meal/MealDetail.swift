@@ -17,6 +17,7 @@ struct MealDetail: View {
         self.mealId = mealId
     }
     
+    // TODO: Make a better looking loading experience, with skeletons perhaps
     var body: some View {
         ScrollView {
             AsyncImage(url: vm.meal?.thumbUrl) { image in
@@ -75,7 +76,11 @@ struct MealDetail: View {
 #Preview {
     MealDetail(
         mealId: "53049",
-        mealsApiService: MealsApiService(baseUrl: "https://themealdb.com/api/json/v1/1", loggingService: LoggingService(), urlSession: URLSession.shared),
+        mealsApiService: MealsApiService(
+            baseUrl: BASE_URL,
+            loggingService: LoggingService(),
+            urlSession: URLSession.shared
+        ),
         loggingService: LoggingService()
     )
 }

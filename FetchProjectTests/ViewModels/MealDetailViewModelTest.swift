@@ -57,7 +57,23 @@ final class MealDetailViewModelTest: XCTestCase {
             mealsApiService: mockMealsApiService,
             loggingService: mockLoggingService
         )
-        vm.meal = meal
+        mockMealsApiService.lookupMealsResponse = LookupMealsResponse(meals: [meal])
+        
+        // When
+        await vm.loadMeal(withId: UUID().uuidString)
+        
+        // Then
+        XCTAssertEqual(vm.meal, meal)
+    }
+    
+    @MainActor func test_MealDetailViewModel_loadMeal_shouldLoadNil() async throws {
+        // Given
+        let meal = MockMealData.generateMeal()
+        let vm = MealDetailViewModel(
+            mealsApiService: mockMealsApiService,
+            loggingService: mockLoggingService
+        )
+        mockMealsApiService.lookupMealsResponse = LookupMealsResponse(meals: [meal])
         
         // When
         await vm.loadMeal(withId: UUID().uuidString)
@@ -69,6 +85,7 @@ final class MealDetailViewModelTest: XCTestCase {
     @MainActor func test_MealDetailViewModel_loadMeal_shouldLogError() async throws {
         // Given
         let vm = MealDetailViewModel(mealsApiService: mockMealsApiService, loggingService: mockLoggingService)
+        mockMealsApiService.lookupMealsResponse = nil
         
         // When
         let mealId = UUID().uuidString

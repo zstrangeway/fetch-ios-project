@@ -34,7 +34,7 @@ final class MealsListViewModelTests: XCTestCase {
     
     @MainActor func test_MealListViewModel_meals_shouldBeInjected() throws {
         // Given
-        let meals = MockMealData.generateMeals(1)
+        let meals = MockMealData.generateMealSummary(1)
         
         // When
         let vm = MealListViewModel(meals: meals, mealsApiService: mockMealsApiService, loggingService: mockLoggingService)
@@ -47,8 +47,8 @@ final class MealsListViewModelTests: XCTestCase {
     @MainActor func test_MealListViewModel_loadMeals_shouldLoadMeals() async throws {
         // Given
         let vm = MealListViewModel(mealsApiService: mockMealsApiService, loggingService: mockLoggingService)
-        let meals = MockMealData.generateMeals(1)
-        mockMealsApiService.meals = meals
+        let meals = MockMealData.generateMealSummary(1)
+        mockMealsApiService.listMealsResponse = ListMealsResponse(meals: meals)
         
         // When
         await vm.loadMeals()
@@ -60,8 +60,8 @@ final class MealsListViewModelTests: XCTestCase {
     @MainActor func test_MealListViewModel_loadMeals_shouldLoadMeals_stress() async throws {
         // Given
         let vm = MealListViewModel(mealsApiService: mockMealsApiService, loggingService: mockLoggingService)
-        let meals = MockMealData.generateMeals(Int.random(in: 10..<100))
-        mockMealsApiService.meals = meals
+        let meals = MockMealData.generateMealSummary(Int.random(in: 10..<100))
+        mockMealsApiService.listMealsResponse = ListMealsResponse(meals: meals)
         
         // When
         await vm.loadMeals()
@@ -73,7 +73,7 @@ final class MealsListViewModelTests: XCTestCase {
     @MainActor func test_MealListViewModel_loadMeals_shouldLogError() async throws {
         // Given
         let vm = MealListViewModel(mealsApiService: mockMealsApiService, loggingService: mockLoggingService)
-        mockMealsApiService.meals = nil
+        mockMealsApiService.listMealsResponse = nil
         
         // When
         await vm.loadMeals()

@@ -23,6 +23,7 @@ final class LoggingServiceTest: XCTestCase {
         loggingService = nil
     }
     
+    // TODO: Can I mock/spy print? ... Google hasn't been helpful here
     func test_LoggingServiceTest_debug_printsStringWithStack() throws {
         // Given
         let message = UUID().uuidString

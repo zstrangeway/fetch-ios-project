@@ -15,25 +15,25 @@ enum MealsApiError: Error {
 }
 
 protocol MealsApiServicable {
-    func listMeals() async throws -> [MealSummary]
-    func getMeal(withId mealId: String) async throws -> Meal
+    func listMeals() async throws -> ListMealsResponse
+    func getMeal(withId mealId: String) async throws -> LookupMealsResponse
 }
 
 class MealsApiService: MealsApiServicable {
     let loggingService: LoggingServicable
     let baseUrl: String
-    let urlSession: URLSession
+    let urlSession: URLSessionProtocol
     
-    init(baseUrl: String, loggingService: LoggingServicable, urlSession: URLSession) {
+    init(baseUrl: String, loggingService: LoggingServicable, urlSession: URLSessionProtocol) {
         self.baseUrl = baseUrl
         self.loggingService = loggingService
         self.urlSession = urlSession
     }
     
-    func listMeals() async throws -> [MealSummary] {
+    func listMeals() async throws -> ListMealsResponse {
         let endpoint = "\(baseUrl)/filter.php?c=Dessert"
         
-        guard let url = URL(string: endpoint) else {
+        guard let url = URL(string: endpoint, encodingInvalidCharacters: false) else {
             loggingService.error("Unable to parse endpoint string into URL: \(endpoint)", stack: nil)
             throw MealsApiError.invalidUrl
         }
@@ -47,18 +47,18 @@ class MealsApiService: MealsApiServicable {
         
         do {
             let decoder = JSONDecoder()
-            let responseDTO = try decoder.decode(ListMealsResponseDTO.self, from: data)
-            return try transformListMealsResponseDTO(responseDTO)
+            let responseDTO = try decoder.decode(ListMealsResponse.DTO.self, from: data)
+            return ListMealsResponse(from: responseDTO)
         } catch let error {
             loggingService.error("unable to decode data into ListMealsResponse: \(data)", stack: error)
             throw MealsApiError.invalidData
         }
     }
     
-    func getMeal(withId mealId: String) async throws -> Meal {
+    func getMeal(withId mealId: String) async throws -> LookupMealsResponse {
         let endpoint = "\(baseUrl)/lookup.php?i=\(mealId)";
         
-        guard let url = URL(string: endpoint) else {
+        guard let url = URL(string: endpoint, encodingInvalidCharacters: false) else {
             loggingService.error("Unable to parse endpoint string into URL: \(endpoint)", stack: nil)
             throw MealsApiError.invalidUrl
         }
@@ -72,80 +72,13 @@ class MealsApiService: MealsApiServicable {
         
         do {
             let decoder = JSONDecoder()
-            let responseDTO = try decoder.decode(LookupMealsResponseDTO.self, from: data)
-            return try tranformLookupMealsResponseDTO(responseDTO)
+            let responseDTO = try decoder.decode(LookupMealsResponse.DTO.self, from: data)
+            return LookupMealsResponse(from: responseDTO)
         } catch let error {
             loggingService.error("unable to decode data into LookupMealsResponse: \(data)", stack: error)
             throw MealsApiError.invalidData
         }
     }
     
-    private func transformListMealsResponseDTO(_ dto: ListMealsResponseDTO) throws -> [MealSummary] {
-        guard let mealSummaryDTOs: [MealSummaryDTO] = dto.meals.filter({ $0 != nil }) as? [MealSummaryDTO] else {
-            throw MealsApiError.invalidData
-        }
-        
-        return mealSummaryDTOs.map{MealSummary(
-            id: $0.idMeal,
-            name: $0.strMeal,
-            thumbUrl: URL(string: $0.strMealThumb)
-        )}
-    }
-    
-    private func tranformLookupMealsResponseDTO(_ dto: LookupMealsResponseDTO) throws -> Meal {
-        guard dto.meals.count > 0 else {
-            // This should never happen... an invalid id should return a 404 response and trigger an earlier exception
-            throw MealsApiError.mealNotFound
-        }
-        
-        let mealDTO = dto.meals[0]
-        
-        var ingredients: [Ingredient] {
-            let rawIngredients = [
-                (mealDTO.strIngredient1, mealDTO.strMeasure1),
-                (mealDTO.strIngredient2, mealDTO.strMeasure2),
-                (mealDTO.strIngredient3, mealDTO.strMeasure3),
-                (mealDTO.strIngredient4, mealDTO.strMeasure4),
-                (mealDTO.strIngredient5, mealDTO.strMeasure5),
-                (mealDTO.strIngredient6, mealDTO.strMeasure6),
-                (mealDTO.strIngredient7, mealDTO.strMeasure7),
-                (mealDTO.strIngredient8, mealDTO.strMeasure8),
-                (mealDTO.strIngredient9, mealDTO.strMeasure9),
-                (mealDTO.strIngredient10, mealDTO.strMeasure10),
-                (mealDTO.strIngredient11, mealDTO.strMeasure11),
-                (mealDTO.strIngredient12, mealDTO.strMeasure12),
-                (mealDTO.strIngredient13, mealDTO.strMeasure13),
-                (mealDTO.strIngredient14, mealDTO.strMeasure14),
-                (mealDTO.strIngredient15, mealDTO.strMeasure15),
-                (mealDTO.strIngredient16, mealDTO.strMeasure16),
-                (mealDTO.strIngredient17, mealDTO.strMeasure17),
-                (mealDTO.strIngredient18, mealDTO.strMeasure18),
-                (mealDTO.strIngredient19, mealDTO.strMeasure19),
-                (mealDTO.strIngredient20, mealDTO.strMeasure20),
-            ]
-            
-            var id = 0;
-            
-            return rawIngredients.filter { (name, measurement) in
-                guard name != nil, name != "", measurement != nil, measurement != "" else {
-                    return false
-                }
-                return true
-            }
-            .map { (name, measurement) in
-                id += 1
-                return Ingredient(id: id, name: name ?? "", measurement: measurement ?? "")
-            }
-        }
-        
-        return Meal(
-            id: mealDTO.idMeal,
-            name: mealDTO.strMeal,
-            thumbUrl: URL(string: mealDTO.strMealThumb),
-            category: mealDTO.strCategory,
-            area: mealDTO.strArea,
-            instructions: mealDTO.strInstructions,
-            ingredients: ingredients
-        )
-    }
+    // TODO: Create HTTP Service to clean this up
 }

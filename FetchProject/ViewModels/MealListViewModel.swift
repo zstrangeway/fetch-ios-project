@@ -21,7 +21,8 @@ import Foundation
     
     func loadMeals() async {
         do {
-            meals = try await mealsApiService.listMeals()
+            // TODO: loading state
+            meals = try await mealsApiService.listMeals().meals
         } catch let error {
             loggingService.debug("Failed to load meals", stack: error)
             // TODO: Display some sort of error to user

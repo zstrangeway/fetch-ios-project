@@ -37,4 +37,6 @@ struct LoggingService: LoggingServicable {
         
         print(logStatement)
     }
+    
+    // TODO: create log funtion to clean this up
 }
